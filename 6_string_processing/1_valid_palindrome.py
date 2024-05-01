@@ -1,7 +1,7 @@
 import re
 
 
-class Solution:
+class Solution61:
     def isPalindrome(self, s: str) -> bool:
         target = "".join(re.findall("[\dA-Za-z]*", s.lower()))
         splitSeq = len(target) // 2
@@ -14,7 +14,7 @@ class Solution:
         return target[:splitSeq] == s2[::-1]
 
 
-s = Solution()
+s = Solution61()
 # true
 print(s.isPalindrome("A man, a plan, a canal: Panama"))
 # false
