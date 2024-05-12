@@ -10,20 +10,27 @@ class ListNode:
 
 class Solution813:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        target = head
-        target_list = []
+        slow, fast = head, head
 
-        while target:
-            target_list.append(target.val)
-            target = target.next
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
 
-        target_list.reverse()
+        if fast:
+            slow = slow.next
 
-        for target_val in target_list:
-            if head.val != target_val:
+        rev = None
+        while slow:
+            next = slow.next
+            slow.next = rev
+            rev = slow
+            slow = next
+
+        while rev:
+            if head.val != rev.val:
                 return False
-            else:
-                head = head.next
+            head = head.next
+            rev = rev.next
 
         return True
 
