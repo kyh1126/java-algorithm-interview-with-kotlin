@@ -14,6 +14,7 @@ class Solution816:
         temp = answer
 
         while l1 or l2:
+            sum = 0
             if l1:
                 sum = l1.val
                 l1 = l1.next
@@ -24,7 +25,11 @@ class Solution816:
 
             temp.val = sum if sum < 10 else sum - 10
             temp.next = ListNode(1 if sum > 9 else 0)
-            temp = temp.next
+
+            if not (l1 or l2) and temp.next.val == 0:
+                temp.next = None
+            else:
+                temp = temp.next
 
         temp.next = l1 or l2
 
@@ -44,3 +49,7 @@ print(s.addTwoNumbers(l21, l22).val)
 l31 = ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, None)))))))
 l32 = ListNode(9, ListNode(9, ListNode(9, ListNode(9, None))))
 print(s.addTwoNumbers(l31, l32).val)
+# [7,0,8]
+l41 = ListNode(2, ListNode(4, ListNode(3, None)))
+l42 = ListNode(5, ListNode(6, ListNode(4, None)))
+print(s.addTwoNumbers(l41, l42).next.next.val)
