@@ -1,13 +1,3 @@
-# Definition for singly-linked list.
-from pip._vendor.typing_extensions import Optional
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
-
-
 class Solution920:
     def isValid(self, s: str) -> bool:
         dic = {"(": ")", "{": "}", "[": "]"}
